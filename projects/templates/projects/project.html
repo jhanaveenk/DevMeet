@@ -2,8 +2,23 @@
 
 {% block content%}
 
-<h1>Projects Template</h1>
-<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
-    typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
-    
+<h3> You are on my {{message}}</h3>
+
+{% if number >= 10 %}
+<p>number is greater than 10</p>
+{% else %}
+<p>number is smaller than 10</p>
+
+{% endif %}
+
+<hr>
+
+<h1>Projects</h1>
+
+<ol>
+    {% for project in projects %}
+        <li>: <a href="{% url 'project' project.id %}">{{project.title}}</a>  --- {{project.description}}</li>
+        <!-- <li>: <a href="/project/{{project.id}}">{{project.title}}</a>  --- {{project.description}}</li> -->
+    {% endfor %}
+</ol>
 {% endblock %}
