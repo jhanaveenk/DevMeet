@@ -2,23 +2,32 @@
 
 {% block content%}
 
-<h3> You are on my {{message}}</h3>
-
-{% if number >= 10 %}
-<p>number is greater than 10</p>
-{% else %}
-<p>number is smaller than 10</p>
-
-{% endif %}
-
-<hr>
-
 <h1>Projects</h1>
-
-<ol>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Projects</th>
+        <th>Positive Votes</th>
+        <th>Ratio</th>
+        <th></th>
+    </tr>
     {% for project in projects %}
-        <li>: <a href="{% url 'project' project.id %}">{{project.title}}</a>  --- {{project.description}}</li>
+    <tr> 
+        <td>{{project.id}}</td>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_total}}</td>
+        <td>{{project.vote_ratio}}%</td>
+        <td>{{project.created}}</td>
+        <td><a href="{% url 'project' project.id %}">Views</a></td>
+    </tr>
+    
+    {% endfor %}
+    </table>
+
+<!-- <ol>
+    {% for project in projects %}
+        <li>: {{project.title}}</a>  --- {{project.description}}</li>
         <!-- <li>: <a href="/project/{{project.id}}">{{project.title}}</a>  --- {{project.description}}</li> -->
     {% endfor %}
-</ol>
+</ol> -->
 {% endblock %}
